@@ -7,10 +7,12 @@
     "version": "1.0",
 
     "icons" : {
-        "57" : "icon.png"
+        "57" : "icon_57.png",
+        "57" : "icon_128.png",
+        "57" : "icon_570.png"
     },
     "browser_action" : {
-        "default_icon": "icon.png"
+        "default_icon": "icon_128.png"
     },
 
     "content_scripts" : [
