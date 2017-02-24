@@ -10,13 +10,15 @@ Don't Need ActiveX!
 
 ### - Manual Install
 
+1. Download [LcPayPaper](https://github.com/GomPam/LcPayPaper/releases)
+
 1. Open Chrome Extensions Page  
 > ![Step_1](./install_image/step_1.png "Step_1")
 
-2. LcPayPaper.crx Drag & Drop
+1. LcPayPaper.crx Drag & Drop
 > ![Step_2](./install_image/step_2.png "Step_2")
 
-3. Done.
+1. Done.
 
 
 ## Using Library
