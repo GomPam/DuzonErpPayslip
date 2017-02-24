@@ -1,3 +1,10 @@
+// Defs
+const EncHex = CryptoJS.enc.Hex;
+const EncBase64 = CryptoJS.enc.Base64;
+
+const EncUtf8 = CryptoJS.enc.Utf8;
+const EncUtf16LE = CryptoJS.enc.Utf16LE;
+
 // 급여명세서의 Capicom 오브젝트의 ClassId 를 가져와서 비교함.
 // 혹시 몰라서 ViewPayPaper 함수 존재 여부도 검사함.
 function is_paypaper() {
@@ -45,6 +52,8 @@ function paypaper_EncryptedData() {
             return true;
         }
     });
+    var regex_pattern = /[\r|\n]/g;
+    EncryptedData = EncryptedData.replace(regex_pattern, "");
     return EncryptedData;
 }
 
@@ -60,42 +69,53 @@ function paypaper_DecryptKey() {
     return DecryptKey;
 }
 
-// view-source:http://cris.joongbu.ac.kr/course/2016-1/wp1/crypto/cryptoJS.html
-// 찬우님 코드 참조 - github.com/enghqii/PayPaperDecrypter
+// http://cris.joongbu.ac.kr/course/2016-1/wp1/crypto/cryptoJS.html
+// 찬우님 코드 참조 - https://github.com/enghqii/PayPaperDecrypter
 // 급여명세서 복호화!
 function decrypt_paypaper() {
-    // alert(paypaper_DecryptKey());
-    var encryptedData = paypaper_EncryptedData();
-    var decryptKey = paypaper_DecryptKey();
+    var encryptedData = EncBase64.parse(paypaper_EncryptedData());
+    var HexedData = encryptedData.toString(EncHex);
 
-    var BlobData = encryptedData.toString(CryptoJS.enc.Base64);
+    // Salt = 16 Bytes.
+    // Capicom RC2-CBC Salt = (66 + 2, 66 + 2 + 16)
+    var Salt = EncHex.parse(HexedData.slice((66 + 2) * 2, (66 + 2 + 16) * 2));
 
-    var _IV = BlobData.slice(56 + 2, 56 + 2 + 8);
-    var _Salt = BlobData.slice(66 + 2, 66 + 2 + 16);
-    var _Content = BlobData.slice(84 + 4, BlobData.length);
+    var Key = paypaper_DecryptKey();
+    var DecryptKey = hashed_decryptKey(Key, Salt);
 
-    var _Password = decryptKey.toString(CryptoJS.enc.Utf16LE);
+    // IV = 8 Bytes.
+    // Capicom RC2-CBC IV = (56 + 2, 56 + 2 + 8)
+    var IV = EncHex.parse(HexedData.slice((56 + 2) * 2, (56 + 2 + 8) * 2));
 
-    var algo_sha1 = CryptoJS.algo.SHA256.create();
-    algo_sha1.update(_Password);
-    algo_sha1.update(_Salt);
-    var _Sha1Key = algo_sha1.finalize();
+    // Content = After 84 + 4 Bytes To End.
+    // Capicom RC2-CBC Content = (84 + 4, DataEndPosition)
+    var Content = EncHex.parse(HexedData.slice((84 + 4) * 2, HexedData.length));
 
-    var _SaltedKey = _Sha1Key.slice(0, 16);
+    var decryptedData = CryptoJS.RC2.decrypt(
+        { ciphertext: Content },
+        DecryptKey,
+        { iv: IV, mode: CryptoJS.mode.CBC, effectiveKeyBits: 128 }
+    );
 
+    var HtmlData = EncUtf16LE.stringify(decryptedData);
+    document.write(HtmlData);
 
-    var algo_rc2 = CryptoJS.RC2.create();
+    return true;
+}
 
-    var decrypted1 = decipher.update(content)
-    var decrypted2 = decipher.final()
+function hashed_decryptKey(Key, Salt) {
+    var encKey = EncUtf16LE.parse(Key);
 
-    var decrypted = Buffer.concat([decrypted1, decrypted2])
+    var algo_sha1 = CryptoJS.algo.SHA1.create();
 
-    // convert 'decrypted' to utf8 string, from utf-16 Little Endian
-    var iconv = new Iconv('UTF-16LE', 'utf-8')
-    var decryptedUtf8 = iconv.convert(decrypted).toString()
+    algo_sha1.update(encKey);
+    algo_sha1.update(Salt);
 
-    return decryptedUtf8
+    var Sha1 = algo_sha1.finalize().toString(EncHex);
+
+    // DecryptKey = 16 Bytes.
+    var _Key = EncHex.parse(Sha1.slice(0, 16 * 2));
+    return _Key;
 }
 
 // 이벤트 바인딩
@@ -116,8 +136,6 @@ function event_binding() {
     });
 }
 
-// alert(is_paypaper());
 if (is_paypaper()) {
-    // alert(paypaper_EncryptedData());
     event_binding();
 }
