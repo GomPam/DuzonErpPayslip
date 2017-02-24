@@ -19,17 +19,21 @@
                 "file:///*"
             ],
             "js" : [
-                "algo/core-min.js",
-                "algo/x64-core-min.js",
-                "algo/cipher-core-min.js",
+                "library/jquery-3.1.1.min.js",
 
-                "algo/sha1.js",
-                "algo/rc2.js",
+                "library/algorithm/core-min.js",
+                "library/algorithm/x64-core-min.js",
+                "library/algorithm/cipher-core-min.js",
 
-                "algo/enc-base64-min.js",
-                "algo/enc-utf16-min.js",
+                "library/algorithm/sha1.js",
+                "library/algorithm/rc2.js",
 
-                "content_script.js"
+                "library/algorithm/enc-base64-min.js",
+                "library/algorithm/enc-utf16-min.js",
+
+                "scripts/paypaper.js",
+                "scripts/decrypt.js",
+                "scripts/content_script.js"
             ],
             "run_at": "document_end"
         }
