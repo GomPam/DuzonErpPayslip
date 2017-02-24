@@ -7,6 +7,9 @@ Don't Need ActiveX!
 
 ## Install
 
+### - Chrome Web Store
+
+* [Download From 'Chrome Web Store'](https://chrome.google.com/webstore/detail/nplnninmekjdbcdggfkfjhhnbkendelb)
 
 ### - Manual Install
 
@@ -17,6 +20,8 @@ Don't Need ActiveX!
 
 1. LcPayPaper.crx Drag & Drop
 > ![Step_2](./install_image/step_2.png "Step_2")
+
+1. Checked "Allow access to file URLs" Option
 
 1. Done.
 
