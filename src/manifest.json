@@ -1,0 +1,45 @@
+{
+    "manifest_version": 2,
+
+    "name": "로드컴플릿 급여명세서 뷰어",
+    "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
+    "author": "GomPam (JeongWon)",
+    "version": "1.0",
+
+    "icons" : {
+        "57" : "icon.png"
+    },
+    "browser_action" : {
+        "default_icon": "icon.png"
+    },
+
+    "content_scripts" : [
+        {
+            "matches" : [
+                "file:///*"
+            ],
+            "js" : [
+                "library/jquery-3.1.1.min.js",
+
+                "library/algorithm/core-min.js",
+                "library/algorithm/x64-core-min.js",
+                "library/algorithm/cipher-core-min.js",
+
+                "library/algorithm/sha1.js",
+                "library/algorithm/rc2.js",
+
+                "library/algorithm/enc-base64-min.js",
+                "library/algorithm/enc-utf16-min.js",
+
+                "scripts/paypaper.js",
+                "scripts/decrypt.js",
+                "scripts/content_script.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+
+    "permissions": [
+        "activeTab"
+    ]
+}
