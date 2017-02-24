@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
 
-    "name": "Lc PayPaper",
-    "description": "로드컴플릿 급여명세서 복호화를 ActiveX 없이 가능하게 함.",
-    "author": "GomPam - hgw3674@gmail.com",
+    "name": "로드컴플릿 급여명세서 뷰어",
+    "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
+    "author": "GomPam (JeongWon)",
     "version": "1.0",
 
     "icons" : {
@@ -16,10 +16,16 @@
                 "file:///*"
             ],
             "js" : [
-                "algo/core.js",
-                "algo/x64-core.js",
-                "algo/enc-utf16.js",
-                "algo/enc-base64.js",
+                "algo/core-min.js",
+                "algo/x64-core-min.js",
+                "algo/cipher-core-min.js",
+
+                "algo/sha1.js",
+                "algo/rc2.js",
+
+                "algo/enc-base64-min.js",
+                "algo/enc-utf16-min.js",
+
                 "content_script.js"
             ],
             "run_at": "document_end"
