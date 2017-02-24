@@ -2,15 +2,19 @@
     "manifest_version": 2,
 
     "name": "로드컴플릿 급여명세서 뷰어",
+    "short_name": "LcPayPaper",
+
     "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
     "author": "GomPam (JeongWon)",
-    "version": "1.0",
+    "version": "1.1",
 
     "icons" : {
-        "57" : "icon.png"
+        "57" : "icon_57.png",
+        "57" : "icon_128.png",
+        "57" : "icon_570.png"
     },
     "browser_action" : {
-        "default_icon": "icon.png"
+        "default_icon": "icon_128.png"
     },
 
     "content_scripts" : [
