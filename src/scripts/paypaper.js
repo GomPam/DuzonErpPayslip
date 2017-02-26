@@ -9,12 +9,12 @@ var PayPaper = {
         // 2. Capicom Object 의 ClassId 가 추출한 값과 동일한가?
 
         var crypto_object = $('#capicom');
-        if (crypto_object === null) {
+        if (crypto_object.length === 0) {
             return false;
         }
 
         var object_cls = crypto_object.attr('classid');
-        if (object_cls === null) {
+        if (object_cls === undefined) {
             return false;
         }
 

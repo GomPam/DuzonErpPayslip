@@ -1,27 +1,39 @@
 # LcPayPaper
 
-PayPaper Decrypt Chrome Plugin.
+Duzon Erp 기반의 암호화된 메일을 ActiveX 없이 볼 수 있는 뷰어
 
-Don't Need ActiveX!
+* Html 파일을 다운로드해서 열어주고, 암호를 입력해주면 끝!
+
+* 정상적으로 작동되지 않는다면? "파일 URL에 대한 액세스 허용" 옵션 체크을 확인해주세요!
+![Allow_File_URLs_IMG](./img/install_img/Allow_File_URLs_IMG.png "Allow_File_URLs_IMG")
 
 
 ## Install
 
-### - Chrome Web Store
+#### 1. Chrome Web Store
 
-* [Download From 'Chrome Web Store'](https://chrome.google.com/webstore/detail/nplnninmekjdbcdggfkfjhhnbkendelb)
+1. [Download](https://chrome.google.com/webstore/detail/nplnninmekjdbcdggfkfjhhnbkendelb) From 'Chrome Web Store'
 
-### - Manual Install
+1. Open Chrome Extensions Page  
+> ![Extensions_Settings_IMG](./img/install_img/Extensions_Settings_IMG.png "Extensions_Settings_IMG")
+
+1. Checked "Allow access to file URLs" Option
+> ![Allow_File_URLs_IMG](./img/install_img/Allow_File_URLs_IMG.png "Allow_File_URLs_IMG")
+
+1. Done.
+
+#### 2. Manual Install
 
 1. Download [LcPayPaper](https://github.com/GomPam/LcPayPaper/releases)
 
 1. Open Chrome Extensions Page  
-> ![Step_1](./install_image/step_1.png "Step_1")
+> ![Extensions_Settings_IMG](./img/install_img/Extensions_Settings_IMG.png "Extensions_Settings_IMG")
 
 1. LcPayPaper.crx Drag & Drop
-> ![Step_2](./install_image/step_2.png "Step_2")
+> ![Drag_Drap_IMG](./img/install_img/Drag_Drap_IMG.png "Drag_Drap_IMG")
 
 1. Checked "Allow access to file URLs" Option
+> ![Allow_File_URLs_IMG](./img/install_img/Allow_File_URLs_IMG.png "Allow_File_URLs_IMG")
 
 1. Done.
 
@@ -30,6 +42,7 @@ Don't Need ActiveX!
 
 * [jquery](https://github.com/jquery/jquery)
 * [crypto-js](https://github.com/tomyun/crypto-js) - Using RC2-CBC Decrypt
+
 
 ## Special Thanks
 
