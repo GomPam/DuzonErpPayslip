@@ -5,22 +5,22 @@ function event_bind() {
         function (evt) {
             // Enter == 13
             if (evt.keyCode == 13)
-                decrypt_paypaper();
+                return decrypt_paypaper();
         }
     );
     InputPwd.on(
         'keyup',
         function (evt) {
             if (this.value.length == 7)
-                decrypt_paypaper();
+                return decrypt_paypaper();
         }
     );
 
     // Confirm Button
-    $('#frm a[href*="ViewPayPaper"]').on(
+    $('a:has(img)').on(
         'click',
         function (evt) {
-            decrypt_paypaper();
+            return decrypt_paypaper();
         }
     );
 }
@@ -29,9 +29,8 @@ function decrypt_paypaper() {
     var InputedKey = PayPaper.Key();
 
     if (InputedKey.length != 7) {
-        // HACK: 기존 ViewPayPaper() 가 작동하고 있어, 메세지가 두번 반복됨.
-        // alert('비밀번호가 일치하지 않습니다.');
-        // PayPaper.KeyReset();
+        alert('비밀번호가 올바르지 않습니다.');
+        PayPaper.KeyReset();
     }
     else {
         var EncryptedData = PayPaper.Data();
@@ -45,6 +44,9 @@ function decrypt_paypaper() {
             PayPaper.KeyReset();
         }
     }
+
+    // Event 전파 방지
+    return false;
 }
 
 if (PayPaper.IsVaild()) {

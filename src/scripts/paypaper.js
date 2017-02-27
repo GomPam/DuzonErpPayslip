@@ -1,6 +1,6 @@
 // Defs
-const InputPwd = $('#pwd');
-const InputData = $('#frm input[name="_viewData"]');
+const InputPwd = $('input[type="password"]');
+const InputData = $('input[name="_viewData"]');
 
 var PayPaper = {
     IsVaild: function() {
@@ -8,19 +8,29 @@ var PayPaper = {
         // 1. Capicom Object 가 존재하는가?
         // 2. Capicom Object 의 ClassId 가 추출한 값과 동일한가?
 
+        // Google Attachment Preview 기능으로 보게 되면
+        // <script> 태그가 자동 삭제되고
+        // <object> 태그도 자동 삭제된다.
+        // 그러니 위의 증명 방법으로 증명되지 못함.
+
+        // _viewData 가 존재하는지 추가 증명을 하도록 한다.
+
         var crypto_object = $('#capicom');
         if (crypto_object.length === 0) {
-            return false;
+            if (InputData.length === 0) {
+                return false;
+            }
         }
+        else {
+            var object_cls = crypto_object.attr('classid');
+            if (object_cls === undefined) {
+                return false;
+            }
 
-        var object_cls = crypto_object.attr('classid');
-        if (object_cls === undefined) {
-            return false;
-        }
-
-        var paypaper_cls = 'CLSID:A440BD76-CFE1-4D46-AB1F-15F238437A3D';
-        if (object_cls.toUpperCase() != paypaper_cls.toUpperCase()) {
-            return false;
+            const paypaper_cls = 'CLSID:A440BD76-CFE1-4D46-AB1F-15F238437A3D';
+            if (object_cls.toUpperCase() != paypaper_cls.toUpperCase()) {
+                return false;
+            }
         }
 
         return true;
