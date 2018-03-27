@@ -36,13 +36,11 @@ var PayPaper = {
         return true;
     },
 
-    // Inputed Key
-    Key: function() {
-        var DecryptKey = InputPwd.val();
-        return DecryptKey;
+    // Inputed Password
+    Password: function() {
+        return InputPwd.val();
     },
-
-    KeyReset: function() {
+    PasswordReset: function() {
         InputPwd.val('');
         InputPwd.focus();
     },
@@ -56,5 +54,22 @@ var PayPaper = {
         EncryptedData = EncryptedData.replace(regex_pattern, "");
 
         return EncryptedData;
+    },
+
+    // Decrypt Logic
+    Decrypt: function(InputedKey, EncryptedData) {
+        // For Legary Support..
+        if ($('form[name="0.1_frm"]') !== null) {
+            return Decryptor.Decrypt(InputedKey, EncryptedData);
+        }
+        else {
+            // New
+            var text = '';
+            var bin = unescape(EncryptedData).split(',');
+            for (var i = 0; i < bin.length; i++) {
+                text = text + String.fromCharCode(Number(bin[i]) + strKey.charCodeAt(i % strKey.length));
+            }
+            return text;
+        }
     }
 }

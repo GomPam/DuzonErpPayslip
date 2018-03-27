@@ -11,7 +11,7 @@ function event_bind() {
     InputPwd.on(
         'keyup',
         function (evt) {
-            if (this.value.length == 7)
+            if (this.value.length == this.maxLength)
                 return decrypt_paypaper();
         }
     );
@@ -26,27 +26,36 @@ function event_bind() {
 }
 
 function decrypt_paypaper() {
-    var InputedKey = PayPaper.Key();
+    var InputedKey = PayPaper.Password();
+    var InputPwdMaxLength = InputPwd.get(0).maxLength;
 
-    if (InputedKey.length != 7) {
-        alert('비밀번호가 올바르지 않습니다.');
-        PayPaper.KeyReset();
+    if (InputedKey.length != InputPwdMaxLength) {
+        error_alert(0, InputedKey.length + '/' + InputPwdMaxLength);
     }
     else {
-        var EncryptedData = PayPaper.Data();
-        var HtmlData = Decryptor.Decrypt(InputedKey, EncryptedData);
+        try {
+            var EncryptedData = PayPaper.Data();
+            var HtmlData = PayPaper.Decrypt(InputedKey, EncryptedData);
 
-        if (HtmlData.search(/html/) > -1) {
-            document.write(HtmlData);
+            if (HtmlData.search(/html/) > -1) {
+                document.write(HtmlData);
+            }
+            else {
+                throw "Decrypting Error";
+            }
         }
-        else {
-            alert('비밀번호가 일치하지 않습니다.');
-            PayPaper.KeyReset();
+        catch(e) {
+            error_alert(1, e);
         }
     }
 
     // Event 전파 방지
     return false;
+}
+
+function error_alert(err, msg_text) {
+    alert('비밀번호가 올바르지 않습니다. (err: ' + err + ') - [' + msg_text + ']');
+    PayPaper.PasswordReset();
 }
 
 if (PayPaper.IsVaild()) {
