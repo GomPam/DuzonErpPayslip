@@ -1,18 +1,18 @@
-function event_bind() {
+function EventBinding() {
     // Password Input
     InputPwd.on(
         'keypress',
         function (evt) {
             // Enter == 13
             if (evt.keyCode == 13)
-                return decrypt_paypaper();
+                return ViewPayPaper();
         }
     );
     InputPwd.on(
         'keyup',
         function (evt) {
-            if (this.value.length == 7)
-                return decrypt_paypaper();
+            if (this.value.length == this.maxLength)
+                return ViewPayPaper();
         }
     );
 
@@ -20,28 +20,27 @@ function event_bind() {
     $('a:has(img)').on(
         'click',
         function (evt) {
-            return decrypt_paypaper();
+            return ViewPayPaper();
         }
     );
 }
 
-function decrypt_paypaper() {
-    var InputedKey = PayPaper.Key();
-
-    if (InputedKey.length != 7) {
-        alert('비밀번호가 올바르지 않습니다.');
-        PayPaper.KeyReset();
+function ViewPayPaper() {
+    if (PayPaper.Password().length != InputPwd.get(0).maxLength) {
+        ErrorAlert(0, PayPaper.Password().length + '/' + InputPwd.get(0).maxLength);
     }
     else {
-        var EncryptedData = PayPaper.Data();
-        var HtmlData = Decryptor.Decrypt(InputedKey, EncryptedData);
-
-        if (HtmlData.search(/html/) > -1) {
-            document.write(HtmlData);
+        try {
+            var HtmlData = Decryptor.Decrypt(PayPaper.Password(), PayPaper.Data());
+            if (HtmlData.search(/html/) > -1) {
+                document.write(HtmlData);
+            }
+            else {
+                throw "Decrypting Error";
+            }
         }
-        else {
-            alert('비밀번호가 일치하지 않습니다.');
-            PayPaper.KeyReset();
+        catch(e) {
+            ErrorAlert(1, e);
         }
     }
 
@@ -49,7 +48,12 @@ function decrypt_paypaper() {
     return false;
 }
 
+function ErrorAlert(err, msg_text) {
+    PayPaper.PasswordReset();
+    alert('비밀번호가 올바르지 않습니다. (err: ' + err + ') - [' + msg_text + ']');
+}
+
 if (PayPaper.IsVaild()) {
     // KeyEvent, ButtonClick Event Bind
-    event_bind();
+    EventBinding();
 }

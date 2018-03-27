@@ -6,7 +6,7 @@
 
     "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
     "author": "GomPam (JeongWon)",
-    "version": "1.3",
+    "version": "1.4",
 
     "icons" : {
         "57" : "icon_57.png",
@@ -37,7 +37,7 @@
                 "library/algorithm/enc-utf16-min.js",
 
                 "scripts/paypaper.js",
-                "scripts/decrypt.js",
+                "scripts/decryptor.js",
                 "scripts/content_script.js"
             ],
             "run_at": "document_end"
