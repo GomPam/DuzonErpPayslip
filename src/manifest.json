@@ -37,7 +37,7 @@
                 "library/algorithm/enc-utf16-min.js",
 
                 "scripts/paypaper.js",
-                "scripts/decrypt.js",
+                "scripts/decryptor.js",
                 "scripts/content_script.js"
             ],
             "run_at": "document_end"
