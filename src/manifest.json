@@ -9,12 +9,12 @@
     "version": "1.4.1",
 
     "icons" : {
-        "57" : "icon_57.png",
-        "128" : "icon_128.png",
-        "570" : "icon_570.png"
+        "57" : "payslip_icon_57.png",
+        "128" : "payslip_icon_128.png",
+        "570" : "payslip_icon_570.png"
     },
     "browser_action" : {
-        "default_icon": "icon_128.png"
+        "default_icon": "payslip_icon_128.png"
     },
 
     "content_scripts" : [
