@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
 
-    "name": "로드컴플릿 급여명세서 뷰어",
-    "short_name": "LcPayPaper",
+    "name": "더존 급여명세서 뷰어",
+    "short_name": "Duzon Erp Payslip",
 
-    "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
+    "description": "더존 Erp 를 통해 발급된 급여명세서를 ActiveX 없이 볼 수 있게!",
     "author": "GomPam (JeongWon)",
     "version": "1.4.1",
 
