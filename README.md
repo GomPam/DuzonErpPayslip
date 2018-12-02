@@ -40,3 +40,4 @@ Duzon Erp 기반의 암호화된 급여명세서을 ActiveX 없이 볼 수 있�
 ## Special Thanks
 
 * [enghqii](https://github.com/enghqii) - Make LcPayPaper Node.Js, Referenced Logic
+* [Rflor](https://thenounproject.com/rflor/) - Orignal Icon 'Payroll' [payroll by Rflor from the Noun Project]
