@@ -34,6 +34,14 @@ function ViewPaysilp() {
             var HtmlData = Decryptor.Decrypt(Paysilp.Password(), Paysilp.Data());
             if (HtmlData.search(/html/) > -1) {
                 document.write(HtmlData);
+
+                // Decrypted Html 에 Css Style 적용 
+                $('body')
+                    .css('margin', '15px');
+                
+                $('table')
+                    .css('margin-left', 'auto')
+                    .css('margin-right', 'auto');
             }
             else {
                 throw "Decrypting Error";
