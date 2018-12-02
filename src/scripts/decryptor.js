@@ -82,7 +82,7 @@ var Decryptor = {
         var HtmlData = '';
         var BinaryData = unescape(EncryptedData).split(',');
         BinaryData.forEach(
-            function(BinaryStr, Idx, DataArray) {
+            function(BinaryStr, Idx) {
                 HtmlData += String.fromCharCode(Number(BinaryStr) + InputedKey.charCodeAt(Idx % InputedKey.length));
             }
         );
