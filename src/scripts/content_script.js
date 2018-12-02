@@ -5,14 +5,14 @@ function EventBinding() {
         function (evt) {
             // Enter == 13
             if (evt.keyCode == 13)
-                return ViewPayPaper();
+                return ViewPaysilp();
         }
     );
     InputPwd.on(
         'keyup',
         function (evt) {
             if (this.value.length == this.maxLength)
-                return ViewPayPaper();
+                return ViewPaysilp();
         }
     );
 
@@ -20,18 +20,18 @@ function EventBinding() {
     $('a:has(img)').on(
         'click',
         function (evt) {
-            return ViewPayPaper();
+            return ViewPaysilp();
         }
     );
 }
 
-function ViewPayPaper() {
-    if (PayPaper.Password().length != InputPwd.get(0).maxLength) {
-        ErrorAlert(0, PayPaper.Password().length + '/' + InputPwd.get(0).maxLength);
+function ViewPaysilp() {
+    if (Paysilp.Password().length != InputPwd.get(0).maxLength) {
+        ErrorAlert(0, Paysilp.Password().length + '/' + InputPwd.get(0).maxLength);
     }
     else {
         try {
-            var HtmlData = Decryptor.Decrypt(PayPaper.Password(), PayPaper.Data());
+            var HtmlData = Decryptor.Decrypt(Paysilp.Password(), Paysilp.Data());
             if (HtmlData.search(/html/) > -1) {
                 document.write(HtmlData);
             }
@@ -49,11 +49,11 @@ function ViewPayPaper() {
 }
 
 function ErrorAlert(err, msg_text) {
-    PayPaper.PasswordReset();
+    Paysilp.PasswordReset();
     alert('비밀번호가 올바르지 않습니다. (err: ' + err + ') - [' + msg_text + ']');
 }
 
-if (PayPaper.IsVaild()) {
+if (Paysilp.IsVaild()) {
     // KeyEvent, ButtonClick Event Bind
     EventBinding();
 }

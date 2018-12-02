@@ -36,7 +36,7 @@
                 "library/algorithm/enc-base64-min.js",
                 "library/algorithm/enc-utf16-min.js",
 
-                "scripts/paypaper.js",
+                "scripts/paysilp.js",
                 "scripts/decryptor.js",
                 "scripts/content_script.js"
             ],
