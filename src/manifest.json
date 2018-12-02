@@ -1,20 +1,20 @@
 {
     "manifest_version": 2,
 
-    "name": "로드컴플릿 급여명세서 뷰어",
-    "short_name": "LcPayPaper",
+    "name": "더존 급여명세서 뷰어",
+    "short_name": "Duzon Erp Payslip",
 
-    "description": "급여명세서를 ActiveX 없이 볼 수 있게!",
+    "description": "더존 Erp 를 통해 발급된 급여명세서를 ActiveX 없이 볼 수 있게!",
     "author": "GomPam (JeongWon)",
-    "version": "1.3",
+    "version": "1.4.1",
 
     "icons" : {
-        "57" : "icon_57.png",
-        "128" : "icon_128.png",
-        "570" : "icon_570.png"
+        "57" : "payslip_icon_57.png",
+        "128" : "payslip_icon_128.png",
+        "570" : "payslip_icon_570.png"
     },
     "browser_action" : {
-        "default_icon": "icon_128.png"
+        "default_icon": "payslip_icon_128.png"
     },
 
     "content_scripts" : [
@@ -36,8 +36,8 @@
                 "library/algorithm/enc-base64-min.js",
                 "library/algorithm/enc-utf16-min.js",
 
-                "scripts/paypaper.js",
-                "scripts/decrypt.js",
+                "scripts/paysilp.js",
+                "scripts/decryptor.js",
                 "scripts/content_script.js"
             ],
             "run_at": "document_end"
