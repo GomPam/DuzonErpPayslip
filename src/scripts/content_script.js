@@ -33,7 +33,8 @@ function ViewPaysilp() {
         try {
             var HtmlData = Decryptor.Decrypt(Paysilp.Password(), Paysilp.Data());
             if (HtmlData.search(/html/) > -1) {
-                document.write(HtmlData);
+                document.body.innerHTML = HtmlData;
+                // document.write(HtmlData);
 
                 // Decrypted Html 에 Css Style 적용 
                 $('body')
