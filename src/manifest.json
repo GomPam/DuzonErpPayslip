@@ -6,7 +6,7 @@
 
     "description": "더존 Erp 를 통해 발급된 급여명세서를 ActiveX 없이 볼 수 있게!",
     "author": "GomPam (JeongWon)",
-    "version": "1.4.1",
+    "version": "1.4.2",
 
     "icons" : {
         "57" : "payslip_icon_57.png",
