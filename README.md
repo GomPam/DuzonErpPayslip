@@ -9,9 +9,13 @@ Duzon Erp 기반의 암호화된 급여명세서을 ActiveX 없이 볼 수 있�
 ![Allow_Access_To_File_URLs_IMG](./img/install_img/Allow_Access_To_File_URLs_IMG.png "Allow_Access_To_File_URLs_IMG")
 
 
-## Install - Use To Chrome Web Store
+## Install
 
-1. [Download](https://chrome.google.com/webstore/detail/nplnninmekjdbcdggfkfjhhnbkendelb) From 'Chrome Web Store'
+### Firefox - [Download](https://addons.mozilla.org/ko/firefox/addon/duzon-erp-payslip/) From 'Firefox Add-ons'
+
+1. Just Install. -Done.
+
+### Chrome - [Download](https://chrome.google.com/webstore/detail/nplnninmekjdbcdggfkfjhhnbkendelb) From 'Chrome Web Store'
 
 1. Open Chrome Extensions Page
 <br /><br />
@@ -26,9 +30,6 @@ Duzon Erp 기반의 암호화된 급여명세서을 ActiveX 없이 볼 수 있�
 ![Allow_Access_To_File_URLs_IMG](./img/install_img/Allow_Access_To_File_URLs_IMG.png "Allow_Access_To_File_URLs_IMG")
 
 1. Done.
-
-## Manual Install Is Deprecated!
-* Why? - [[Google Chrome Policy]](https://blog.chromium.org/2018/06/improving-extension-transparency-for.html)
 
 
 ## Using Library
