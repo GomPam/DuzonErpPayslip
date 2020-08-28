@@ -1,5 +1,5 @@
 # Archive
-# - 최근 버전에서는 ActiveX 를 사용하지 않도록 수정된 것을 확인
+- 최근 버전에서는 ActiveX 를 사용하지 않도록 수정된 것을 확인
 
 # Duzon Erp Payslip
 
